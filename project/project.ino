@@ -8,28 +8,14 @@ MeRGBLed led(PORT_3); // led
 
 uint8_t motorSpeed = 200;
 
-float j, f, k;
-
-struct color {
+struct my_color {
   uint8_t r;
   uint8_t g;
   uint8_t b;
-}
-
-red_color
+};
 
 void setup() {
-  for(uint8_t i = 0; i < 1; i++) {
-    set_random_color();
-    go_forward(motorSpeed);
-    set_random_color();
-    go_backward(motorSpeed);
-    set_random_color();
-    turn_left(motorSpeed);
-    set_random_color();
-    turn_right(motorSpeed);
-  }
-  stop_motors();
+  // dance();
 }
 
 void loop() {}
@@ -37,19 +23,19 @@ void loop() {}
 void go_forward(uint8_t speed) {
   left_motor.run(-speed);
   right_motor.run(speed);
-  delay(2000);
+  delay(700);
 }
 
 void go_backward(uint8_t speed) {
   left_motor.run(speed);
   right_motor.run(-speed);
-  delay(2000);
+  delay(700);
 }
 
 void stop_motors() {
   left_motor.stop();
   right_motor.stop();
-  delay(2000);
+  delay(700);
 }
 
 void turn_left(uint8_t speed) {
@@ -64,15 +50,31 @@ void turn_right(uint8_t speed) {
   delay(2000);
 }
 
-void set_random_color() {
-  for(uint8_t t = 1; t < 15; t++) {
-    uint8_t red  = 64 * (1 + sin(t / 2.0 + j / 4.0) );
-    uint8_t green = 64 * (1 + sin(t / 1.0 + f / 9.0 + 2.1) );
-    uint8_t blue = 64 * (1 + sin(t / 3.0 + k / 14.0 + 4.2) );
-    led.setColorAt(t, red, green, blue);
-  }
+void set_color(my_color color) {
+  led.setColor(color.r, color.g, color.b);
   led.show();
-  j += random(1, 6) / 6.0;
-  f += random(1, 6) / 6.0;
-  k += random(1, 6) / 6.0;
+}
+
+void dance() {
+  struct my_color red;
+  red.r = 255;
+  red.g = 0;
+  red.b = 0;
+  
+  struct my_color blue;
+  blue.r = 0;
+  blue.g = 0;
+  blue.b = 255;
+
+  for(uint8_t i = 0; i < 15; i++) {
+    set_color(blue);
+    go_forward(motorSpeed);
+    set_color(red);
+    go_backward(motorSpeed);
+    set_color(blue);
+    turn_left(motorSpeed);
+    set_color(red);
+    turn_right(motorSpeed);
+  }
+  stop_motors();
 }
