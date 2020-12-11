@@ -47,17 +47,17 @@ void setup() {
 }
 
 void loop() {
-  distance = ultraSensor.distanceCm();
-  if (distance < 10)
-  {
-    set_color(red);
-    /* code */
-  }
-  else
-  {
-    set_color(blue);
-    /* code */
-  }
+//  distance = ultraSensor.distanceCm();
+//  if (distance < 10)
+//  {
+//    set_color(red);
+//    /* code */
+//  }
+//  else
+//  {
+//    set_color(blue);
+//    /* code */
+//  }
   
   // int sensorState = lineFinder.readSensors();
   // switch(sensorState)
