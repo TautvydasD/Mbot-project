@@ -161,6 +161,19 @@ int jingle_bells_longer_notes_durations[] = {
 
 };
 
+int darude_notes[] = {
+  NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4,
+  NOTE_A4, NOTE_A4, NOTE_A4, NOTE_G4, NOTE_G4, NOTE_G4,
+  NOTE_D4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4,
+  NOTE_G5, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4
+};
+
+int darude_notes_durations[] = {
+  4, 4, 8, 8, 4,
+  8, 8, 4, 8, 8, 4,
+  2, 8, 4, 8, 8, 4,
+  8, 8, 4, 8, 8, 16, 16
+};
 int songCounter = 0;
 
 /*************************************************
